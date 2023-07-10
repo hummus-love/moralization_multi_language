@@ -9,32 +9,48 @@ from lxml.etree import XMLSyntaxError
 import spacy
 from typing import List
 
-try:
-    # german
-    import de_core_news_sm
+def import_language(language: str):
     # english
-    import en_core_web_sm
+    if language == 'english':
+        try:
+            import en_core_web_sm    
+        except ImportError:
+            logging.warning(
+                "Required Spacy model 'en_core_web_sm' was not found. Attempting to download it.."
+            )
+            spacy.cli.download("en_core_web_sm")
+            import en_core_web_sm
     # french
-    import fr_core_news_sm
+    if language == 'french':
+        try:
+            import fr_core_news_sm    
+        except ImportError:
+            logging.warning(
+                "Required Spacy model 'fr_core_news_sm' was not found. Attempting to download it.."
+            )
+            spacy.cli.download("fr_core_news_sm")
+            import fr_core_news_sm
+    # german
+    if language == 'german':
+        try:
+            import de_core_news_sm    
+        except ImportError:
+            logging.warning(
+                "Required Spacy model 'de_core_news_sm' was not found. Attempting to download it.."
+            )
+            spacy.cli.download("de_core_news_sm")
+            import de_core_news_sm
     # italian
-    import it_core_news_sm
+    if language == 'italian':
+        try:
+            import it_core_news_sm    
+        except ImportError:
+            logging.warning(
+                "Required Spacy model 'it_core_news_sm' was not found. Attempting to download it.."
+            )
+            spacy.cli.download("it_core_news_sm")
+            import it_core_news_sm
 
-except ImportError:
-    logging.warning(
-        "Required Spacy model was not found. Attempting to download it.."
-    )
-    # german
-    spacy.cli.download("de_core_news_sm")
-    import de_core_news_sm
-    # english
-    spacy.cli.download("en_core_web_sm")
-    import en_core_web_sm
-    # french
-    spacy.cli.download("fr_core_news_sm")
-    import fr_core_news_sm
-    # italian
-    spacy.cli.download("it_core_news_sm")
-    import it_core_news_sm
 
 pkg = importlib_resources.files("moralization")
 
@@ -157,6 +173,9 @@ class InputOutput:
         supported_languages = ['english', 'french', 'german', 'italian']
         if language not in supported_languages:
             raise ValueError("Your language is not supported. It must be one of {}".format(supported_languages))
+        
+        # import spacy model
+        import_language(language=language)
         
         if language == 'english':
             nlp = en_core_web_sm.load()
