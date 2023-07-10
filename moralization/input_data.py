@@ -178,13 +178,13 @@ class InputOutput:
         import_language(language=language)
         
         if language == 'english':
-            nlp = en_core_web_sm.load()
+            nlp = spacy.load(en_core_web_sm)
         elif language == 'french':
-            nlp = fr_core_news_sm.load()
+            nlp = spacy.load(fr_core_news_sm)
         elif language == 'german':
-            nlp = de_core_news_sm.load()
+            nlp = spacy.load(de_core_news_sm)
         elif language == 'italian':
-            nlp = it_core_news_sm.load()
+            nlp = spacy.load(it_core_news_sm)
 
         doc = nlp(cas.sofa_string)
 
