@@ -165,7 +165,7 @@ class InputOutput:
             "Protagonistinnen": "KAT3-Rolle",
             "Protagonistinnen3": "KAT3-own/other",
             "KommunikativeFunktion": "KAT4-Kommunikative Funktion",
-            "Forderung": "KAT5-Forderung_explizit",
+            "Forderung": "KAT5-Forderung explizit",
             #       "KAT5Ausformulierung": "KAT5-Forderung implizit",
             #       "Kommentar": "KOMMENTAR",
         }
