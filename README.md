@@ -17,7 +17,7 @@ pip install git+https://github.com/ssciwr/moralization.git
 ```
 
 ## Example notebooks
-Here you can find a few short introduction notebooks on google colab.
+Here you can find a few short introduction notebooks on Google Colab.
 
 - [DemoNotebook_interactive_plots](https://colab.research.google.com/github/ssciwr/moralization/blob/main/notebooks/DemoNotebook_interactive_plots.ipynb)
 
